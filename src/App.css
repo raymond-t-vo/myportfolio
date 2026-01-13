@@ -1,42 +1,137 @@
+/* Reset */
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  width: 100%;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #ffffff;
+  color: #111;
+}
+
+/* NAVBAR */
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 48px;
+  background-color: #f8faf7;
+}
+
+/* left side */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-icon {
+  font-size: 22px;
+}
+
+.nav-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #07b243;
+}
+
+/* right side */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 28px;n
+}
+
+.nav-right a {
+  text-decoration: none;
+  color: #038f34;
+  font-size: 16px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  transition: background 0.2s ease;
+}
+
+.nav-right a:hover {
+  background-color: rgba(79, 123, 90, 0.12);
+}
+
+/* optional: active pill */
+.nav-right a.active {
+  background-color: #4f7b5a;
+  color: white;
+}
+
+/* page content spacing */
+main {
+  padding: 40px 48px;
+}
+
+/* Page background + spacing */
+.page {
+  background: #f6faf6;
+  min-height: calc(100vh - 120px); /* subtract navbar height */
+}
+
+/* Centering container */
+.hero {
+  display: flex;
+  justify-content: center; /* horizontal center */
+  align-items: center;     /* vertical center */
+  padding: 80px 24px;      /* spacing from navbar */
+}
+
+/* The card */
+.hero-card {
+  background: rgb(255, 255, 255);
+  max-width: 720px;
+  width: 100%;
+  padding: 48px 56px;
+  border-radius: 16px;
   text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Small pill */
+.breaking {
+  display: inline-block;
+  background: #02c626;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  margin-bottom: 32px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Headline */
+.hero-title {
+  font-size: 44px;
+  font-weight: 600;
+  color: #1f3d2b;
+  line-height: 1.2;
+  margin-bottom: 24px;
 }
 
-.card {
-  padding: 2em;
+/* Subtitle */
+.hero-subtitle {
+  font-size: 18px;
+  color: #5f7d69;
+  line-height: 1.6;
+  margin-bottom: 32px;
 }
 
-.read-the-docs {
-  color: #888;
+/* Footer line */
+.hero-footer {
+  font-size: 14px;
+  color: #6f8f7a;
+  border-top: 1px solid #e1ece4;
+  padding-top: 16px;
 }

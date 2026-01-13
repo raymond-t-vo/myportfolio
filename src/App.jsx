@@ -8,26 +8,40 @@ function App() {
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+      <header class="navbar">
+        <div class="nav-left">
+          <span class="logo">🌿 The Vo Times</span>
+        </div>
+
+        <nav class="nav-right">
+          <a href="#">Home</a>
+          <a href="#"> Resume</a>
+          <a href="#"> Projects</a>
+          <a href="#"> About</a>
+          <a href="#"> Contact</a>
+
+        </nav>
+      </header>
+      <main className="page">
+  <section className="hero">
+    <div className="hero-card">
+      <div className="breaking">↗ BREAKING NEWS ↗</div>
+
+      <h1 className="hero-title">
+        Raymond Vo makes personal <br />  portfolio website "The Vo Times"
+      </h1>
+
+      <p className="hero-subtitle">
+        NYC-based student brings his work on display
       </p>
+
+      <div className="hero-footer">
+        Read more
+      </div>
+    </div>
+  </section>
+</main>
+
     </>
   )
 }
