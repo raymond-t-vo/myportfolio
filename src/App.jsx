@@ -35,9 +35,10 @@ function App() {
         NYC-based student brings his work on display
       </p>
 
-      <div className="hero-footer">
-        Read more
-      </div>
+      <button className="read-more-btn">
+        Read more →
+      </button>
+
     </div>
   </section>
 </main>

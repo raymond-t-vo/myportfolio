@@ -47,10 +47,10 @@ body {
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 28px;n
+  gap: 28px;
 }
 
-.nav-right a {
+.nav-right a{
   text-decoration: none;
   color: #038f34;
   font-size: 16px;
@@ -76,7 +76,7 @@ main {
 
 /* Page background + spacing */
 .page {
-  background: #f6faf6;
+  background: #27a127;
   min-height: calc(100vh - 120px); /* subtract navbar height */
 }
 
@@ -129,9 +129,23 @@ main {
 }
 
 /* Footer line */
-.hero-footer {
-  font-size: 14px;
-  color: #6f8f7a;
-  border-top: 1px solid #e1ece4;
-  padding-top: 16px;
+.read-more-btn {
+  background-color: #3f8af5;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
 }
+
+.read-more-btn:hover {
+  background-color: #3f6b4a;
+}
+
+.read-more-btn:active {
+  transform: scale(0.96);
+}
+
