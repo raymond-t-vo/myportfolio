@@ -1,16 +1,15 @@
 const projects = [
   {
-    title: "E-Commerce Platform",
-    tagline: "Full-stack online shopping platform with real-time inventory",
+    title: "The Vo Times",
+    tagline: "Personal Portfolio Website",
     githubUrl: "https://github.com/yourname/ecommerce",
     liveUrl: "https://your-demo-link.com",
-    problem: "Small businesses struggled to manage online sales and inventory simultaneously.",
+    problem: "Just a resume is boring, and my beautiful projects don't get to be seen.",
     solution:
-      "Built a comprehensive platform with integrated inventory management, payment processing, and an analytics dashboard.",
-    impact: "Helped 50+ small businesses increase online sales by 300% on average.",
-    stack: ["React", "Node.js", "PostgreSQL", "Stripe API", "AWS"],
-    reflection:
-      "This project taught me the importance of scalable architecture and the value of user feedback in iterative development. The biggest challenge was optimizing the real-time inventory system to handle concurrent updates.",
+      "This website built using vite and react.",
+    impact: "Getting you to read this.",
+    stack: ["React", "Node.js", "Vite", "HTML", "CSS","Figma"],
+    reflection: "This project taught me HTML, CSS and gave me a great introduction into UI",
   },
   // Add more projects here
 ]
