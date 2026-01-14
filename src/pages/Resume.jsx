@@ -4,9 +4,7 @@ export default function Resume() {
       <section className="resume">
         <header className="resume-header">
           <h1 className="resume-title">Resume</h1>
-          <p className="resume-subtitle">
-            Download a PDF or browse highlights below.
-          </p>
+         
 
             <a
             href="https://www.linkedin.com/in/raymond-t-vo/"
@@ -30,17 +28,18 @@ export default function Resume() {
           <div className="resume-card">
             <h2>Skills</h2>
             <ul>
-              <li>JavaScript / React</li>
-              <li>HTML / CSS</li>
               <li>Python</li>
-              <li>Git / GitHub</li>
+              <li>Java</li>
+              <li>VS Code</li>
+              <li>OpenAI API</li>
+              
             </ul>
           </div>
 
           <div className="resume-card">
-            <h2>Experience</h2>
-            <p><strong>Role Title</strong> — Company</p>
-            <p>1–2 bullet points describing impact.</p>
+            <h2>Recent Experience</h2>
+            <p><strong>AI Intern – Natural Language Querying</strong> — Tractics</p>
+            <p>Built an AI Natural Language Querying chatbot enabling users to ask questions about construction data and receive instant insights.</p>
           </div>
 
 

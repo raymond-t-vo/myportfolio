@@ -8,7 +8,7 @@ export default function Home() {
           <div className="breaking">↗ BREAKING NEWS ↗</div>
 
           <h1 className="hero-title">
-            Raymond Vo makes personal <br /> portfolio website "The Vo Times"
+            Raymond Vo makes personal <br /> portfolio website <br />"The Vo Times"
           </h1>
 
           <p className="hero-subtitle">
