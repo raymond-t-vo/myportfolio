@@ -150,33 +150,40 @@ export default function Projects() {
   const [lightbox, setLightbox] = useState(null)
 
   return (
-    <main className="page">
-      <section className="projects">
-        <h1 className="projects-title">Projects</h1>
-        <p className="projects-subtitle">
-          A few things I've built — problem, solution, and impact.
-        </p>
+    <main
+          className="page home"
+          style={{
+            backgroundImage: `url(${bgImage})`,
+          }}
+        >
+        <main className="page">
+            <section className="projects">
+                <h1 className="projects-title">Projects</h1>
+                <p className="projects-subtitle">
+                A few things I've built — problem, solution, and impact.
+                </p>
 
-        <div className="projects-list">
-          {projects.map((p) => (
-            <ProjectCard
-              key={p.title}
-              p={p}
-              onOpenGallery={(images, index) =>
-                setLightbox({ images, index })
-              }
-            />
-          ))}
-        </div>
-      </section>
+                <div className="projects-list">
+                {projects.map((p) => (
+                    <ProjectCard
+                    key={p.title}
+                    p={p}
+                    onOpenGallery={(images, index) =>
+                        setLightbox({ images, index })
+                    }
+                    />
+                ))}
+                </div>
+            </section>
 
-      {lightbox && (
-        <Lightbox
-          images={lightbox.images}
-          startIndex={lightbox.index}
-          onClose={() => setLightbox(null)}
-        />
-      )}
+            {lightbox && (
+                <Lightbox
+                images={lightbox.images}
+                startIndex={lightbox.index}
+                onClose={() => setLightbox(null)}
+                />
+            )}
+        </main>
     </main>
   )
 }
