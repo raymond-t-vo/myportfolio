@@ -1,3 +1,10 @@
+import { useEffect, useState } from "react"
+import img1 from "../assets/1.png"
+import img2 from "../assets/2.png"
+import img3 from "../assets/3.png"
+import img4 from "../assets/4.png"
+import img5 from "../assets/5.png"
+
 const projects = [
   {
     title: "The Vo Times",
@@ -5,13 +12,28 @@ const projects = [
     githubUrl: "https://github.com/yourname/ecommerce",
     liveUrl: "https://your-demo-link.com",
     problem: "Just a resume is boring, and my beautiful projects don't get to be seen.",
-    solution:
-      "This website built using vite and react.",
+    solution: "This website built using Vite and React.",
     impact: "Getting you to read this.",
-    stack: ["React", "Node.js", "Vite", "HTML", "CSS","Figma"],
-    reflection: "This project taught me HTML, CSS and gave me a great introduction into UI",
+    stack: ["React", "Vite", "HTML", "CSS", "Figma"],
+    reflection:
+      "This project taught me HTML, CSS and gave me a great introduction into UI.",
+    gallery: [img1, img2],
+
   },
-  // Add more projects here
+  {
+    title: "Tractics Natural Language Query (NLQ)",
+    tagline: "AI Natural Language Querying chatbot",
+    githubUrl: "",
+    liveUrl: "",
+    problem: "Construction project managers have many questions, but the volume and complexity of data make it difficult to find answers. Most do not know SQL or have the technical skills needed to query the data effectively.",
+    solution: "Built an AI Natural Language Querying chatbot enabling users to ask questions about construction data and receive instant insights.",
+    impact: "Recieved great praise from the company. My prototype will be used internally to test if they want to implement it throughout the platform.",
+    stack: ["React", "Vite", "HTML", "CSS", "Figma"],
+    reflection:
+      "This project taught me HTML, CSS and gave me a great introduction into UI.",
+    gallery: [img3, img4, img5],
+
+  }
 ]
 
 function IconLink({ href, label, children }) {
@@ -30,7 +52,34 @@ function IconLink({ href, label, children }) {
   )
 }
 
-function ProjectCard({ p }) {
+function Lightbox({ images, startIndex, onClose }) {
+  const [index, setIndex] = useState(startIndex)
+
+  useEffect(() => {
+    function onKey(e) {
+      if (e.key === "Escape") onClose()
+      if (e.key === "ArrowLeft") setIndex((i) => (i - 1 + images.length) % images.length)
+      if (e.key === "ArrowRight") setIndex((i) => (i + 1) % images.length)
+    }
+    window.addEventListener("keydown", onKey)
+    return () => window.removeEventListener("keydown", onKey)
+  }, [images.length, onClose])
+
+  return (
+    <div className="lightbox" onClick={onClose}>
+      <div className="lightbox-inner" onClick={(e) => e.stopPropagation()}>
+        <button className="lb-btn lb-close" onClick={onClose}>✕</button>
+        <button className="lb-btn lb-left" onClick={() => setIndex((i) => (i - 1 + images.length) % images.length)}>‹</button>
+
+        <img src={images[index]} className="lightbox-img" alt="" />
+
+        <button className="lb-btn lb-right" onClick={() => setIndex((i) => (i + 1) % images.length)}>›</button>
+      </div>
+    </div>
+  )
+}
+
+function ProjectCard({ p, onOpenGallery }) {
   return (
     <article className="project-card">
       <div className="project-top">
@@ -41,27 +90,10 @@ function ProjectCard({ p }) {
 
         <div className="project-links">
           <IconLink href={p.githubUrl} label="GitHub">
-            {/* GitHub icon */}
-            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-              <path
-                fill="currentColor"
-                d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.31 6.84 9.66.5.1.68-.22.68-.48 0-.24-.01-.86-.01-1.69-2.78.62-3.37-1.38-3.37-1.38-.46-1.2-1.12-1.52-1.12-1.52-.92-.65.07-.64.07-.64 1.02.07 1.56 1.08 1.56 1.08.9 1.6 2.37 1.14 2.95.87.09-.67.35-1.14.64-1.4-2.22-.26-4.56-1.14-4.56-5.1 0-1.13.39-2.05 1.03-2.78-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.06a9.2 9.2 0 0 1 2.5-.35c.85 0 1.7.12 2.5.35 1.9-1.34 2.74-1.06 2.74-1.06.55 1.4.2 2.44.1 2.7.64.73 1.03 1.65 1.03 2.78 0 3.97-2.34 4.83-4.57 5.09.36.32.69.95.69 1.92 0 1.39-.01 2.5-.01 2.84 0 .26.18.58.69.48A10.1 10.1 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"
-              />
-            </svg>
+            <span>GitHub</span>
           </IconLink>
-
-          <IconLink href={p.liveUrl} label="Live demo">
-            {/* External link icon */}
-            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-              <path
-                fill="currentColor"
-                d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3z"
-              />
-              <path
-                fill="currentColor"
-                d="M5 5h6v2H7v10h10v-4h2v6H5V5z"
-              />
-            </svg>
+          <IconLink href={p.liveUrl} label="Live">
+            <span>Live</span>
           </IconLink>
         </div>
       </div>
@@ -85,12 +117,24 @@ function ProjectCard({ p }) {
         <div className="stack-title">{"</>"} Tech Stack</div>
         <div className="chips">
           {p.stack.map((s) => (
-            <span key={s} className="chip">
-              {s}
-            </span>
+            <span key={s} className="chip">{s}</span>
           ))}
         </div>
       </div>
+
+      {p.gallery?.length > 0 && (
+        <div className="thumbs">
+          {p.gallery.map((src, i) => (
+            <button
+              key={src}
+              className="thumb"
+              onClick={() => onOpenGallery(p.gallery, i)}
+            >
+              <img src={src} alt="" />
+            </button>
+          ))}
+        </div>
+      )}
 
       <div className="divider" />
 
@@ -103,20 +147,36 @@ function ProjectCard({ p }) {
 }
 
 export default function Projects() {
+  const [lightbox, setLightbox] = useState(null)
+
   return (
     <main className="page">
       <section className="projects">
         <h1 className="projects-title">Projects</h1>
         <p className="projects-subtitle">
-          A few things I’ve built — problem, solution, and impact.
+          A few things I've built — problem, solution, and impact.
         </p>
 
         <div className="projects-list">
           {projects.map((p) => (
-            <ProjectCard key={p.title} p={p} />
+            <ProjectCard
+              key={p.title}
+              p={p}
+              onOpenGallery={(images, index) =>
+                setLightbox({ images, index })
+              }
+            />
           ))}
         </div>
       </section>
+
+      {lightbox && (
+        <Lightbox
+          images={lightbox.images}
+          startIndex={lightbox.index}
+          onClose={() => setLightbox(null)}
+        />
+      )}
     </main>
   )
 }
