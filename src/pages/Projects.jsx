@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react"
+import bgImage from "../assets/home_bg.jpg"
+
 import img1 from "../assets/1.png"
 import img2 from "../assets/2.png"
 import img3 from "../assets/3.png"
@@ -15,25 +17,24 @@ const projects = [
     solution: "This website built using Vite and React.",
     impact: "Getting you to read this.",
     stack: ["React", "Vite", "HTML", "CSS", "Figma"],
-    reflection:
-      "This project taught me HTML, CSS and gave me a great introduction into UI.",
+    reflection: "I realized that integrating AI into a project wasn't as complicated as I thought it would be.",
     gallery: [img1, img2],
-
   },
   {
     title: "Tractics Natural Language Query (NLQ)",
     tagline: "AI Natural Language Querying chatbot",
     githubUrl: "",
     liveUrl: "",
-    problem: "Construction project managers have many questions, but the volume and complexity of data make it difficult to find answers. Most do not know SQL or have the technical skills needed to query the data effectively.",
-    solution: "Built an AI Natural Language Querying chatbot enabling users to ask questions about construction data and receive instant insights.",
-    impact: "Recieved great praise from the company. My prototype will be used internally to test if they want to implement it throughout the platform.",
+    problem:
+      "Construction project managers have many questions, but the volume and complexity of data make it difficult to find answers. Most do not know SQL or have the technical skills needed to query the data effectively.",
+    solution:
+      "Built an AI Natural Language Querying chatbot enabling users to ask questions about construction data and receive instant insights.",
+    impact:
+      "Received great praise from the company. My prototype will be used internally to test if they want to implement it throughout the platform.",
     stack: ["React", "Vite", "HTML", "CSS", "Figma"],
-    reflection:
-      "This project taught me HTML, CSS and gave me a great introduction into UI.",
+    reflection: "This project taught me HTML, CSS and gave me a great introduction into UI.",
     gallery: [img3, img4, img5],
-
-  }
+  },
 ]
 
 function IconLink({ href, label, children }) {
@@ -53,7 +54,7 @@ function IconLink({ href, label, children }) {
 }
 
 function Lightbox({ images, startIndex, onClose }) {
-  const [index, setIndex] = useState(startIndex)
+  const [index, setIndex] = useState(startIndex ?? 0)
 
   useEffect(() => {
     function onKey(e) {
@@ -68,12 +69,27 @@ function Lightbox({ images, startIndex, onClose }) {
   return (
     <div className="lightbox" onClick={onClose}>
       <div className="lightbox-inner" onClick={(e) => e.stopPropagation()}>
-        <button className="lb-btn lb-close" onClick={onClose}>✕</button>
-        <button className="lb-btn lb-left" onClick={() => setIndex((i) => (i - 1 + images.length) % images.length)}>‹</button>
+        <button className="lb-btn lb-close" onClick={onClose} aria-label="Close">
+          ✕
+        </button>
+
+        <button
+          className="lb-btn lb-left"
+          onClick={() => setIndex((i) => (i - 1 + images.length) % images.length)}
+          aria-label="Previous"
+        >
+          ‹
+        </button>
 
         <img src={images[index]} className="lightbox-img" alt="" />
 
-        <button className="lb-btn lb-right" onClick={() => setIndex((i) => (i + 1) % images.length)}>›</button>
+        <button
+          className="lb-btn lb-right"
+          onClick={() => setIndex((i) => (i + 1) % images.length)}
+          aria-label="Next"
+        >
+          ›
+        </button>
       </div>
     </div>
   )
@@ -117,7 +133,9 @@ function ProjectCard({ p, onOpenGallery }) {
         <div className="stack-title">{"</>"} Tech Stack</div>
         <div className="chips">
           {p.stack.map((s) => (
-            <span key={s} className="chip">{s}</span>
+            <span key={s} className="chip">
+              {s}
+            </span>
           ))}
         </div>
       </div>
@@ -126,9 +144,10 @@ function ProjectCard({ p, onOpenGallery }) {
         <div className="thumbs">
           {p.gallery.map((src, i) => (
             <button
-              key={src}
+              key={`${p.title}-${i}`}
               className="thumb"
               onClick={() => onOpenGallery(p.gallery, i)}
+              aria-label={`Open screenshot ${i + 1}`}
             >
               <img src={src} alt="" />
             </button>
@@ -151,39 +170,35 @@ export default function Projects() {
 
   return (
     <main
-          className="page home"
-          style={{
-            backgroundImage: `url(${bgImage})`,
-          }}
-        >
-        <main className="page">
-            <section className="projects">
-                <h1 className="projects-title">Projects</h1>
-                <p className="projects-subtitle">
-                A few things I've built — problem, solution, and impact.
-                </p>
+      className="page home"
+      style={{
+        backgroundImage: `url(${bgImage})`,
+      }}
+    >
+      <section className="projects">
+        <h1 className="projects-title">Projects</h1>
+        <p className="projects-subtitle">
+          A few things I&apos;ve built — problem, solution, and impact.
+        </p>
 
-                <div className="projects-list">
-                {projects.map((p) => (
-                    <ProjectCard
-                    key={p.title}
-                    p={p}
-                    onOpenGallery={(images, index) =>
-                        setLightbox({ images, index })
-                    }
-                    />
-                ))}
-                </div>
-            </section>
+        <div className="projects-list">
+          {projects.map((p) => (
+            <ProjectCard
+              key={p.title}
+              p={p}
+              onOpenGallery={(images, index) => setLightbox({ images, index })}
+            />
+          ))}
+        </div>
+      </section>
 
-            {lightbox && (
-                <Lightbox
-                images={lightbox.images}
-                startIndex={lightbox.index}
-                onClose={() => setLightbox(null)}
-                />
-            )}
-        </main>
+      {lightbox && (
+        <Lightbox
+          images={lightbox.images}
+          startIndex={lightbox.index}
+          onClose={() => setLightbox(null)}
+        />
+      )}
     </main>
   )
 }

@@ -27,7 +27,7 @@ export default function Resume() {
             <h2>Education</h2>
             <p>
               <strong>Columbia University</strong> — Computer Science (B.S.), Minor
-              in Entrepreneurship & Innovation
+              in Entrepreneurship & Innovation (Expected graduation: May 2029)
             </p>
             <p>New York, NY</p>
           </div>
