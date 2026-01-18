@@ -532,3 +532,185 @@ body {
 .contact-btn.primary:hover {
   background: #3f6b4a;
 }
+
+/* ===== BREAKING NEWS LOADER (BIG + SPLIT OPEN) ===== */
+
+.loader-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  overflow: hidden;
+  background: transparent; /* IMPORTANT */
+  animation: overlayFade 2.2s ease forwards;
+}
+
+/* Two panels that split away from the middle */
+.loader-panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50vh;
+  background: #08110d; /* curtains */
+  z-index: 50;
+  will-change: transform;
+}
+.loader-panel--top { top: 0; animation: splitTop 2.2s ease forwards; }
+.loader-panel--bottom { bottom: 0; animation: splitBottom 2.2s ease forwards; }
+
+
+.loader-panel--top {
+  top: 0;
+  animation: splitTop 1.8s ease forwards;
+}
+
+.loader-panel--bottom {
+  bottom: 0;
+  animation: splitBottom 1.8s ease forwards;
+}
+
+/* Center headline */
+.loader-content {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 24px;
+  animation: contentFade 1.8s ease forwards;
+}
+
+.loader-big {
+  font-size: clamp(52px, 7vw, 96px);
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 14px;
+}
+
+.loader-sub {
+  font-size: 16px;
+  opacity: 0.85;
+  letter-spacing: 0.06em;
+}
+
+/* Big repeating “breaking news” ribbons */
+.loader-ticker {
+  position: absolute;
+  left: -25%;
+  width: 150%;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  z-index: 3; /* behind panels/content, but visible before split */
+  opacity: 0.95;
+}
+
+.loader-ticker--a { top: 18%; transform: rotate(-8deg); }
+.loader-ticker--b { top: 60%; transform: rotate(8deg); opacity: 0.85; }
+
+.loader-track {
+  display: inline-flex;
+  gap: 18px;
+  white-space: nowrap;
+  will-change: transform;
+  animation: tickerMove 4.5s linear infinite;
+
+}
+
+
+/* animations */
+@keyframes tickerMove {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Fade the center content out right as split happens */
+@keyframes contentFade {
+  0%   { opacity: 1; transform: scale(1); }
+  60%  { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.98); }
+}
+
+/* Hold, then split apart from the center */
+@keyframes splitTop {
+  0%   { transform: translateY(0); }
+  55%  { transform: translateY(0); }
+  100% { transform: translateY(-100%); }
+}
+
+@keyframes splitBottom {
+  0%   { transform: translateY(0); }
+  55%  { transform: translateY(0); }
+  100% { transform: translateY(100%); }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .loader-panel--top,
+  .loader-panel--bottom,
+  .loader-track,
+  .loader-content {
+    animation: none !important;
+  }
+}
+
+@keyframes overlayFade {
+  0%   { opacity: 1; pointer-events: all; }
+  80%  { opacity: 1; }
+  100% { opacity: 0; pointer-events: none; }
+}
+
+@keyframes splitTop {
+  0%   { transform: translateY(0); }
+  60%  { transform: translateY(0); }
+  100% { transform: translateY(-100%); }
+}
+
+@keyframes splitBottom {
+  0%   { transform: translateY(0); }
+  60%  { transform: translateY(0); }
+  100% { transform: translateY(100%); }
+}
+/* ===== CLEAN SPLIT SCREEN LOADER ===== */
+/* ===== CLEAN SPLIT SCREEN LOADER ===== */
+
+.split-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  pointer-events: none;
+}
+
+/* panels */
+.split-panel {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50vh;
+  background: #08110d; /* dark green-black */
+}
+
+/* top panel */
+.split-top {
+  top: 0;
+  animation: splitTop 1.2s ease forwards;
+}
+
+/* bottom panel */
+.split-bottom {
+  bottom: 0;
+  animation: splitBottom 1.2s ease forwards;
+}
+
+/* animations */
+@keyframes splitTop {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100%); }
+}
+
+@keyframes splitBottom {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(100%); }
+}
