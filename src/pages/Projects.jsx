@@ -6,18 +6,25 @@ import img2 from "../assets/2.png"
 import img3 from "../assets/3.png"
 import img4 from "../assets/4.png"
 import img5 from "../assets/5.png"
+import img6 from "../assets/6.png"
+import img7 from "../assets/7.png"
+import img8 from "../assets/8.png"
+import img9 from "../assets/9.png"
+import img10 from "../assets/10.png"
+import img11 from "../assets/11.png"
+import img12 from "../assets/12.png"
 
 const projects = [
   {
     title: "The Vo Times",
     tagline: "Personal Portfolio Website",
-    githubUrl: "https://github.com/yourname/ecommerce",
-    liveUrl: "https://your-demo-link.com",
+    githubUrl: "",
+    liveUrl: "",
     problem: "Just a resume is boring, and my beautiful projects don't get to be seen.",
     solution: "This website built using Vite and React.",
     impact: "Getting you to read this.",
     stack: ["React", "Vite", "HTML", "CSS", "Figma"],
-    reflection: "I realized that integrating AI into a project wasn't as complicated as I thought it would be.",
+    reflection: "This project taught me HTML, CSS and gave me a great introduction into UI.",
     gallery: [img1, img2],
   },
   {
@@ -32,8 +39,23 @@ const projects = [
     impact:
       "Received great praise from the company. My prototype will be used internally to test if they want to implement it throughout the platform.",
     stack: ["React", "Vite", "HTML", "CSS", "Figma"],
-    reflection: "This project taught me HTML, CSS and gave me a great introduction into UI.",
+    reflection: "I realized that integrating AI into a project wasn't as complicated as I thought it would be.",
     gallery: [img3, img4, img5],
+  },
+  {
+    title: "Culture Shock App",
+    tagline: "Discrimination Awareness",
+    githubUrl: "",
+    liveUrl: "",
+    problem:
+      "Lack of Discrimination Reporting and Awareness. Barriers to Education & Cultural Understanding. Limited Pathways for Action and Advocacy",
+    solution:
+      "We empower communities to combat discrimination by amplifying the voices of victims, educating users on the complexities of prejudice, and providing actionable tools for change. ",
+    impact:
+      "Placed 7th internationally and 1st in Missouri at the TSA Software Development Competition. Also placed 3rd at DECA districts for a startup business plan, qualifying for the state competition.",
+    stack: ["Android apps", "MIT app inventor", "Canva"],
+    reflection: "This project taught me that tech can be used for good.",
+    gallery: [img11, img9, img8, img7, img10, img6, img12],
   },
 ]
 
