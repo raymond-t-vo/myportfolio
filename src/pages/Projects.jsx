@@ -38,7 +38,7 @@ const projects = [
       "Built an AI Natural Language Querying chatbot enabling users to ask questions about construction data and receive instant insights.",
     impact:
       "Received great praise from the company. My prototype will be used internally to test if they want to implement it throughout the platform.",
-    stack: ["React", "Vite", "HTML", "CSS", "Figma"],
+    stack: ["ChatGPT", "SQL", "Python"],
     reflection: "I realized that integrating AI into a project wasn't as complicated as I thought it would be.",
     gallery: [img3, img4, img5],
   },
