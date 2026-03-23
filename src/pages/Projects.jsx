@@ -13,6 +13,10 @@ import img9 from "../assets/9.png"
 import img10 from "../assets/10.png"
 import img11 from "../assets/11.png"
 import img12 from "../assets/12.png"
+import img13 from "../assets/13.png"
+import img14 from "../assets/14.png"
+import img15 from "../assets/15.png"
+import img16 from "../assets/16.png"
 
 const projects = [
   {
@@ -56,6 +60,22 @@ const projects = [
     stack: ["Android apps", "MIT app inventor", "Canva"],
     reflection: "This project taught me that tech can be used for good.",
     gallery: [img11, img9, img8, img7, img10, img6, img12],
+  },
+  {
+    title: "DuoRelate",
+    tagline: "AI-Powered Relationship Skill Builder",
+    githubUrl: "",
+    liveUrl: "",
+    problem:
+      "Many people lack safe, low-stakes environments to practice social and relationship skills. Fear of rejection, inexperience, and anxiety prevent users from building confidence in real-world interactions, while existing apps focus on outcomes rather than skill development.",
+    solution:
+      "DuoRelate is an AI-powered companion that simulates real-life conversations, helping users practice communication, build confidence, and learn how to express boundaries. Through interactive scenarios, personalized feedback, and gamified lessons, users improve relationship skills in a judgment-free environment.",
+    impact:
+      "Students at Columbia University love it!!!",
+    stack: ["Figma", "Project Requirement Doc (PRD)", "Replit"],
+    reflection:
+      "This project showed me how technology can directly impact people’s confidence and personal growth. I learned how to design not just for functionality, but for emotional experience—building something that feels safe, supportive, and genuinely useful.",
+    gallery: [img13, img14, img15, img16],
   },
 ]
 
